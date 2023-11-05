@@ -1,4 +1,4 @@
-package com.rohilla.quizapp;
+package com.rohilla.quizapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,11 +1,9 @@
 package com.rohilla.quizapp.controller;
 
 
-import com.rohilla.quizapp.Question;
+import com.rohilla.quizapp.model.Question;
 import com.rohilla.quizapp.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

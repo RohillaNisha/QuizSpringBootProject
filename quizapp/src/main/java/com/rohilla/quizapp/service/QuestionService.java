@@ -1,6 +1,6 @@
 package com.rohilla.quizapp.service;
 
-import com.rohilla.quizapp.Question;
+import com.rohilla.quizapp.model.Question;
 import com.rohilla.quizapp.dao.QuestionDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
