@@ -2,7 +2,9 @@ package com.rohilla.quizapp.controller;
 
 import com.rohilla.quizapp.model.Question;
 import com.rohilla.quizapp.model.QuestionWrapper;
+import com.rohilla.quizapp.model.UserResponse;
 import com.rohilla.quizapp.service.QuizService;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -27,5 +29,10 @@ public class QuizController {
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
         return quizService.getQuizQuestions(id);
 
+    }
+
+    @PostMapping("submit/{id}")
+    public ResponseEntity<Integer> submitQuiz(@PathVariable Integer id, @RequestBody List<UserResponse> userResponses){
+        return quizService.calculateResult(id, userResponses);
     }
 }

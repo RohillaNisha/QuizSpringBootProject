@@ -5,6 +5,7 @@ import com.rohilla.quizapp.dao.QuizDao;
 import com.rohilla.quizapp.model.Question;
 import com.rohilla.quizapp.model.QuestionWrapper;
 import com.rohilla.quizapp.model.Quiz;
+import com.rohilla.quizapp.model.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,5 +46,18 @@ public class QuizService {
 
         return new ResponseEntity<>(questionForUser,HttpStatus.OK);
 
+    }
+
+    public ResponseEntity<Integer> calculateResult(Integer id, List<UserResponse> userResponses) {
+        Quiz quiz = quizDao.findById(id).get();
+        List<Question> questions = quiz.getQuestions();
+        int questionsResponsedRight = 0;
+        int i = 0;
+        for(UserResponse userResponse: userResponses){
+            if (userResponse.getUserResponse().equals(questions.get(i).getRightAnswer()))
+                questionsResponsedRight++;
+            i++;
+        }
+        return new ResponseEntity<>(questionsResponsedRight, HttpStatus.OK);
     }
 }
